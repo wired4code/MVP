@@ -1,8 +1,20 @@
 var app = angular.module('myApp', ['ngRoute', 'ngResource']);
 
-app.controller('currentWeatherController', ['$scope', function($scope){
+// services
 
-  $scope.city = 'Ann Arbor';
-  $scope.temp = 50;
+/*app.service('zipService', function(){
+  this.zip = '48104';
+});*/
+
+// controller
+app.controller('currentWeatherController', ['$scope', /*'zipService', */function($scope, zipService){
+
+  $scope.zipCode = '';
+
+/*  $scope.$watch('zip', function(){
+    zipService.zip = $scope.zip;
+  });*/
 
 }]);
+
+
