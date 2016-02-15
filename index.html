@@ -4,6 +4,8 @@
 
   <title>Weather4Cast</title>
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
   <script src="https://code.angularjs.org/1.4.5/angular-resource.js"></script>
@@ -13,19 +15,28 @@
 
 <body>
 
-  <div class="container" ng-controller="currentWeatherController">
-
-    <div class="title">
-      <h1>Weather4Cast</h1>
+  <div class="container-fluid" ng-controller="currentWeatherController">
+    <div class="row"></div>
+      <div class="col-md-4"><h1>Weather4Cast</h1></div>
+      <div class="col-md-4 input form-group form-inline">
+      <input class="form-control" type="text" ng-model="zipCode" placeholder="Type in a zip code"></input>
+      <button type="submit" class="btn btn-default">Get Weather</button>
     </div>
 
-    <div class="input">
-      <input type="text" ng-model="zipCode" placeholder="Type in a zip code"></input>
-      <button class="weatherButton">Get Weather</button>
+    <div class="col-md-4 weather-info">
+      The weather for {{ result.name }}:
     </div>
 
-    <div class="weather-info">
-      The weather for {{ result.name }} is:
+    <div class="col-md-4 weather-info">
+      The temperature is {{ result.main.temp }} Kelvin.
+    </div>
+
+    <div class="col-md-4 weather-info">
+      Today's high is {{ result.main.temp_max }} Kelvin.
+    </div>
+
+    <div class="col-md-4 weather-info">
+      Today's humidity level is at {{ result.main.humidity }}%.
     </div>
 
   </div>
