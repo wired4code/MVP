@@ -19,17 +19,17 @@ Once the project moves into development, the press release can be used as a touc
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
 
-  -- Weather4Cast
+  -- WeatherNow
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
 
-  -- anyone in the U.S. wanting to know the weather forecast in a given city and wants it quickly
+  -- anyone in the U.S. wanting to know the current weather in a given city and wants it quickly
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
 
-  -- access the current and forecasted weather in any U.S. city
+  -- access the current temperature and humidity level in any U.S. city
 
 ## Problem ##
   > Describe the problem your product solves.
@@ -39,12 +39,12 @@ Once the project moves into development, the press release can be used as a touc
 ## Solution ##
   > Describe how your product elegantly solves the problem.
 
-  -- at the input of a zip code, the product quickly displays the weather forecast for that area.
+  -- at the input of a zip code, the product quickly displays the current temperature, humidity level and a brief weather description for that area.
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
 
-  -- "It's never been easier to know the weather anywhere in the U.S."
+  -- "It's never been easier to know the current weather anywhere in the U.S."
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
@@ -54,9 +54,9 @@ Once the project moves into development, the press release can be used as a touc
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
 
-  -- "I know have instant access to the weather anywhere in the U.S.!""
+  -- "I now have instant access to the weather anywhere in the U.S.!""
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
 
-  -- Don't leave home without checking the weather! Visit Weather4Cast!
+  -- Don't leave home without checking the weather! Visit WeatherNow!
