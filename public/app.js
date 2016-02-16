@@ -52,11 +52,17 @@ app.controller('mainController', ['$scope', 'zipService', '$resource', '$routePa
 
   $scope.result = $scope.weatherAPI.get({zip:$scope.zipcode, country: "us", appid: "d6dbfbaff7932cf4fe546adbf96d084d" });
 
-  console.log($scope.result);
-  console.log($scope.result.weather)
 
   $scope.submitZip = function(isValid){
     alert('the submit button works!');
+  }
+
+  $scope.cities = [];
+
+  $scope.add = function(){
+    console.log('being added')
+    console.log($scope.cities)
+    $scope.cities.push({city:$scope.result.name, desc: $scope.result.weather[0].description, temp:$scope.result.main.temp, humidity:$scope.result.main.humidity})
   }
 
 }]);
@@ -78,6 +84,13 @@ app.controller('forecastController', ['$scope', 'zipService', '$resource', '$rou
 
   $scope.tempConvert = function(kelvin){
     return Math.round((1.8 * (kelvin - 273)) + 32);
+  };
+
+  $scope.cities = [];
+
+  $scope.add = function(){
+    console.log('clicked within forecastCntrl')
+    $scope.cities.push({city:$scope.result.name, desc: $scope.result.weather[0].description, temp:$scope.result.main.temp, humidity:$scope.result.main.humidity})
   }
 
 

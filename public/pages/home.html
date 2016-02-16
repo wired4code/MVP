@@ -1,9 +1,13 @@
 <div>
     <div class="row">
       <div class="col-md-12 input form-group form-inline">
-      <form action="#/forecast/" method="get">
-      <input class="form-control" type="text" pattern="[0-9]{5}" placeholder="5-digit zip code" ng-model="zipcode" required>
-      <input class="btn btn-primary" value="Get Forecast>
+      <form action="#/forecast/" method="get" ng-submit="add()">
+      <input class="form-control" type="text" pattern="[0-9]{5}" placeholder="5-digit U.S. zip code" ng-model="zipcode" required>
+      <!-- <input class="btn btn-primary" value="Get Forecast> -->
       </form>
     </div>
+</div>
+
+Hello:
+{{cities}}
 

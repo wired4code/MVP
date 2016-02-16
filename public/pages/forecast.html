@@ -1,21 +1,19 @@
+<div
+
 <div class="row">
-  <div class="col-md-6 weather-info">
-    <h2>Today in {{ result.name }}</h2>
+  <div class="col-md-12 weather-info">
     <a href="#/" class="btn btn-primary">Another City</a>
   </div>
 </div>
 
 <hr />
-
-<div class="row">
-  <div class="col-md-12 weather-info">
-    <h3>Outlook: {{ result.weather[0].description }}</h3>
+<div>
+<h2 ng-cloak>Right now in {{ result.name }} ({{zipcode}}), {{ result.weather[0].description | lowercase }}</h2>
 </div>
-
 <div class="row">
   <div class="col-md-4 weather-info">
-    <h3>Current</h3>
-    <h2>{{ tempConvert(result.main.temp) }} &#8457 </h2>
+    <h3>Temperature</h3>
+    <h2 ng-cloak>{{ tempConvert(result.main.temp) }} &#8457 </h2>
 </div>
 
 <!--   <div class="col-md-3 weather-info">
@@ -29,7 +27,7 @@
   </div> -->
 
   <div class="col-md-4 weather-info">
-    <h3>Current Humidity</h3>
+    <h3>Humidity</h3>
     <h2>{{ result.main.humidity }}%</h2>
   </div>
 </div>
