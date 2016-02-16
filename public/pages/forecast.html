@@ -1,10 +1,17 @@
 <div class="row">
-  <div class="col-md-12 weather-info">
+  <div class="col-md-6 weather-info">
     <h2>Today in {{ result.name }}</h2>
+    <a href="#/" class="btn btn-primary">Another City</a>
   </div>
 </div>
 
 <hr />
+
+<div class="row">
+  <div class="col-md-12 weather-info">
+    <h3>Today's Outlook</h3>
+    <h4>{{result.weather[0].icon}} {{ result.weather[0].description }} </h42>
+</div>
 
 <div class="row">
   <div class="col-md-3 weather-info">

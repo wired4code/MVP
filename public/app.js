@@ -23,7 +23,7 @@ app.config(function($routeProvider){
 });
 
 app.service('zipService', function(){
-  this.zipcode = 22201;
+  this.zipcode = '';
 });
 
 
@@ -52,7 +52,8 @@ app.controller('mainController', ['$scope', 'zipService', '$resource', '$routePa
 
   $scope.result = $scope.weatherAPI.get({zip:$scope.zipcode, country: "us", appid: "d6dbfbaff7932cf4fe546adbf96d084d" });
 
-  //console.log($scope.result);
+  console.log($scope.result);
+  console.log($scope.result.weather)
 
 }]);
 
