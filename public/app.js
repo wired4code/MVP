@@ -15,25 +15,24 @@ app.config(function($routeProvider){
       controller: 'mainController'
     })
 
-    .when('/forecast/', {
+    .when('/forecast', {
       templateUrl: 'pages/forecast.html',
       controller: 'forecastController'
-    })
+    });
 
 });
 
+// error regarding ? is occuring bc of line 27 being empty;
 app.service('zipService', function(){
+  console.log('this.zipcode inside service', this.zipcode);
   this.zipcode = '';
+
 });
 
 
 // controller
-app.controller('mainController', ['$scope', 'zipService', '$resource', '$routeParams', function($scope, zipService, $resource, $routeParams){
+app.controller('mainController', ['$scope', 'zipService', '$resource', function($scope, zipService, $resource){
 
-  //$scope.zipcode = zipService.zipcode;
-  $scope.zip = $routeParams.zip;
-
-  //console.log('zip code entered is', $scope.zip)
 
   $scope.zipcode = zipService.zipcode;
 
@@ -41,35 +40,16 @@ app.controller('mainController', ['$scope', 'zipService', '$resource', '$routePa
     zipService.zipcode = $scope.zipcode;
   });
 
-  /*$scope.getCity = function(){
-    console.log('click')
-    console.log('zip code is ' + $scope.zipCity)
-  };*/
 
-  $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/weather", {callback: "JSON_CALLBACK"}, {get: {method: "JSONP"}});
+   $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/weather", {callback: "JSON_CALLBACK"}, {get: {method: "JSONP"}});
 
-  /*+zipService.zip+*/
 
   $scope.result = $scope.weatherAPI.get({zip:$scope.zipcode, country: "us", appid: "d6dbfbaff7932cf4fe546adbf96d084d" });
 
 
-  $scope.submitZip = function(isValid){
-    alert('the submit button works!');
-  }
-
-  $scope.cities = [];
-
-  $scope.add = function(){
-    console.log('being added')
-    console.log($scope.cities)
-    $scope.cities.push({city:$scope.result.name, desc: $scope.result.weather[0].description, temp:$scope.result.main.temp, humidity:$scope.result.main.humidity})
-  }
-
 }]);
 
-app.controller('forecastController', ['$scope', 'zipService', '$resource', '$routeParams', function($scope, zipService, $resource, $routeParams){
-
-  $scope.zip = $routeParams.zip;
+app.controller('forecastController', ['$scope', 'zipService', '$resource', function($scope, zipService, $resource){
 
   $scope.zipcode = zipService.zipcode;
 
@@ -85,13 +65,6 @@ app.controller('forecastController', ['$scope', 'zipService', '$resource', '$rou
   $scope.tempConvert = function(kelvin){
     return Math.round((1.8 * (kelvin - 273)) + 32);
   };
-
-  $scope.cities = [];
-
-  $scope.add = function(){
-    console.log('clicked within forecastCntrl')
-    $scope.cities.push({city:$scope.result.name, desc: $scope.result.weather[0].description, temp:$scope.result.main.temp, humidity:$scope.result.main.humidity})
-  }
 
 
 }]);
