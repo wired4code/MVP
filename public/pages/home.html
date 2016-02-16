@@ -1,9 +1,9 @@
-</div>
+<div>
     <div class="row">
       <div class="col-md-12 input form-group form-inline">
-      <form>
-      <input class="form-control" type="text" placeholder="Type in a zip code" ng-model="zipcode"></input>
-      <a href="#/forecast/:zip" class="btn btn-primary">Get Forecast</a>
+      <form action="#/forecast/" method="get">
+      <input class="form-control" type="text" pattern="[0-9]{5}" placeholder="5-digit zip code" ng-model="zipcode" required>
+      <input class="btn btn-primary" value="Get Forecast>
       </form>
-</div>
+    </div>
 

@@ -15,7 +15,7 @@ app.config(function($routeProvider){
       controller: 'mainController'
     })
 
-    .when('/forecast/:zip', {
+    .when('/forecast/', {
       templateUrl: 'pages/forecast.html',
       controller: 'forecastController'
     })
@@ -54,6 +54,10 @@ app.controller('mainController', ['$scope', 'zipService', '$resource', '$routePa
 
   console.log($scope.result);
   console.log($scope.result.weather)
+
+  $scope.submitZip = function(isValid){
+    alert('the submit button works!');
+  }
 
 }]);
 
