@@ -4,20 +4,26 @@ var app = angular.module('myApp', ['ngRoute', 'ngResource']);
 app.config(function($routeProvider){
 
   $routeProvider
-   /*.when('/forecast', {
-      templateUrl: 'pages/forecast.html',
+
+    .when('/', {
+      templateUrl: 'pages/home.html',
       controller: 'mainController'
-    })*/
+    })
+
+   .when('/home', {
+      templateUrl: 'pages/home.html',
+      controller: 'mainController'
+    })
 
     .when('/forecast/:zip', {
       templateUrl: 'pages/forecast.html',
-      controller: 'mainController'
+      controller: 'forecastController'
     })
 
 });
 
 app.service('zipService', function(){
-  this.zipcode = 48104;
+  this.zipcode = 22201;
 });
 
 
@@ -40,13 +46,31 @@ app.controller('mainController', ['$scope', 'zipService', '$resource', '$routePa
     console.log('zip code is ' + $scope.zipCity)
   };*/
 
-  $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/weather?zip="+$scope.zipcode+",us&appid=d6dbfbaff7932cf4fe546adbf96d084d", {callback: "JSON_CALLBACK"}, {get: {method: "JSONP"}});
+  $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/weather", {callback: "JSON_CALLBACK"}, {get: {method: "JSONP"}});
 
   /*+zipService.zip+*/
 
-  $scope.result = $scope.weatherAPI.get({zip:$scope.zipcode});
+  $scope.result = $scope.weatherAPI.get({zip:$scope.zipcode, country: "us", appid: "d6dbfbaff7932cf4fe546adbf96d084d" });
 
   //console.log($scope.result);
+
+}]);
+
+app.controller('forecastController', ['$scope', 'zipService', '$resource', '$routeParams', function($scope, zipService, $resource, $routeParams){
+
+  $scope.zip = $routeParams.zip;
+
+  $scope.zipcode = zipService.zipcode;
+
+  $scope.$watch('zipcode', function(){
+    zipService.zipcode = $scope.zipcode;
+  });
+
+  $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/weather", {callback: "JSON_CALLBACK"}, {get: {method: "JSONP"}});
+
+
+  $scope.result = $scope.weatherAPI.get({zip:$scope.zipcode, country: "us", appid: "d6dbfbaff7932cf4fe546adbf96d084d" });
+
 
 }]);
 

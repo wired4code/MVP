@@ -1,12 +1,9 @@
-<!-- <div class="row" ng-controller="currentWeatherController">
-  <div class="col-md-12 input form-group form-inline">
-  <input class="form-control" type="text" placeholder="Type in a zip code"></input>
-  <a href="#/forecast" class="btn btn-primary">Get Weather</a>
-</div> -->
-
-<!-- <div class="jumbotron text-center">
-        <h1>Home Page</h1>
-
-        <p>{{ message }}</p>
-</div> -->
+</div>
+    <div class="row">
+      <div class="col-md-12 input form-group form-inline">
+      <form>
+      <input class="form-control" type="text" placeholder="Type in a zip code" ng-model="zipcode"></input>
+      <a href="#/forecast/:zip" class="btn btn-primary">Get Forecast</a>
+      </form>
+</div>
 
