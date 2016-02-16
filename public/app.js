@@ -71,6 +71,10 @@ app.controller('forecastController', ['$scope', 'zipService', '$resource', '$rou
 
   $scope.result = $scope.weatherAPI.get({zip:$scope.zipcode, country: "us", appid: "d6dbfbaff7932cf4fe546adbf96d084d" });
 
+  $scope.tempConvert = function(kelvin){
+    return Math.round((1.8 * (kelvin - 273)) + 32);
+  }
+
 
 }]);
 

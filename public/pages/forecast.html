@@ -1,23 +1,30 @@
 <div class="row">
   <div class="col-md-12 weather-info">
-    The weather for {{ result.name }}
-    The selected city is {{zipcode}}
+    <h2>Today in {{ result.name }}</h2>
   </div>
 </div>
 
 <hr />
 
 <div class="row">
-  <div class="col-md-4 weather-info">
-  The current temperature is {{ result.main.temp }} Kelvin.
+  <div class="col-md-3 weather-info">
+    <h3>Current</h3>
+    <h2>{{ tempConvert(result.main.temp) }} &#8457 </h2>
 </div>
 
-  <div class="col-md-4 weather-info">
-    Today's high is {{ result.main.temp_max }} Kelvin.
+  <div class="col-md-3 weather-info">
+    <h3>Today's High</h3>
+    <h2>{{ tempConvert(result.main.temp_max) }} &#8457</h2>
   </div>
 
-  <div class="col-md-4 weather-info">
-    The current humidity level is at {{ result.main.humidity }}%.
+  <div class="col-md-3 weather-info">
+    <h3>Today's Low</h3>
+    <h2>{{ tempConvert(result.main.temp_min) }} &#8457</h2>
+  </div>
+
+  <div class="col-md-3 weather-info">
+    <h3>Current Humidity</h3>
+    <h2>{{ result.main.humidity }}%</h2>
   </div>
 </div>
 
