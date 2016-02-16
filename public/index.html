@@ -17,13 +17,15 @@
   <header>
   <div class="container">
     <div class="row">
-      <div class="col-md-12"><h1>Weather4Cast</h1></div>
+      <div class="col-md-12">
+      <a href="#/"><h1>Weather4Cast</h1></a>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-12 input form-group form-inline">
       <form>
       <input class="form-control" type="text" placeholder="Type in a zip code" ng-model="zipcode"></input>
-      <a href="#/forecast" class="btn btn-primary">Get Forecast</a>
+      <a href="#/forecast/:zip" class="btn btn-primary">Get Forecast</a>
       <!-- <input type="submit" class="btn btn-primary" value="Get Weather" /> -->
       </form>
     </div>

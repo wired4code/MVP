@@ -4,10 +4,10 @@ var app = angular.module('myApp', ['ngRoute', 'ngResource']);
 app.config(function($routeProvider){
 
   $routeProvider
-    .when('/forecast', {
+   /*.when('/forecast', {
       templateUrl: 'pages/forecast.html',
       controller: 'mainController'
-    })
+    })*/
 
     .when('/forecast/:zip', {
       templateUrl: 'pages/forecast.html',
@@ -29,7 +29,7 @@ app.controller('mainController', ['$scope', 'zipService', '$resource', '$routePa
 
   //console.log('zip code entered is', $scope.zip)
 
-  $scope.zip = zipService.zip;
+  $scope.zipcode = zipService.zipcode;
 
   $scope.$watch('zipcode', function(){
     zipService.zipcode = $scope.zipcode;
@@ -44,7 +44,7 @@ app.controller('mainController', ['$scope', 'zipService', '$resource', '$routePa
 
   /*+zipService.zip+*/
 
-  $scope.result = $scope.weatherAPI.get({zip:$scope.zip});
+  $scope.result = $scope.weatherAPI.get({zip:$scope.zipcode});
 
   //console.log($scope.result);
 
