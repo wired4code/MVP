@@ -1,0 +1,9 @@
+body {
+  background-image: url("background-allweather.png");
+  background-repeat: no-repeat;
+}
+
+
+h1, h2, h3, h4 {
+  color: #D8DDF0;
+}

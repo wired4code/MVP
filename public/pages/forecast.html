@@ -11,8 +11,8 @@
 <h2 ng-cloak>Right now in {{ result.name }} ({{zipcode}}), {{ result.weather[0].description | lowercase }}</h2>
 </div>
 <div class="row">
-  <div class="col-md-4 weather-info">
-    <h3>Temperature</h3>
+  <div class="col-md-3 weather-info">
+    <h4>Temperature</h4>
     <h2 ng-cloak>{{ tempConvert(result.main.temp) }} &#8457 </h2>
 </div>
 
@@ -26,9 +26,14 @@
     <h2>{{ tempConvert(result.main.temp_min) }} &#8457</h2>
   </div> -->
 
-  <div class="col-md-4 weather-info">
-    <h3>Humidity</h3>
+  <div class="col-md-3 weather-info">
+    <h4>Humidity</h4>
     <h2>{{ result.main.humidity }}%</h2>
+  </div>
+
+  <div class="col-md-3 weather-info">
+    <h4>Wind Speed</h4>
+    <h2>{{ round(result.wind.speed) }} mph</h2>
   </div>
 </div>
 

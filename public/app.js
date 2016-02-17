@@ -66,6 +66,10 @@ app.controller('forecastController', ['$scope', 'zipService', '$resource', funct
     return Math.round((1.8 * (kelvin - 273)) + 32);
   };
 
+  $scope.round = function(speed){
+    return Math.round(speed);
+  }
+
 
 }]);
 
