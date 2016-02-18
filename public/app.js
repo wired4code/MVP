@@ -1,66 +1,30 @@
-var app = angular.module('myApp', ['ngRoute', 'ngResource']);
-
-// routes
-app.config(function($routeProvider){
-
-  $routeProvider
-
-    .when('/', {
-      templateUrl: 'pages/home.html',
-      controller: 'mainController'
-    })
-
-   .when('/home', {
-      templateUrl: 'pages/home.html',
-      controller: 'mainController'
-    })
-
-    .when('/forecast', {
-      templateUrl: 'pages/forecast.html',
-      controller: 'forecastController'
-    });
-
-});
-
-// error regarding ? is occuring bc of line 27 being empty;
-app.service('zipService', function(){
-  console.log('this.zipcode inside service', this.zipcode);
-  this.zipcode = '';
-
-});
+var app = angular.module('myApp', []);
 
 
-// controller
-app.controller('mainController', ['$scope', 'zipService', '$resource', function($scope, zipService, $resource){
+app.controller('ZipController', ['$scope', '$http', function($scope, $http){
 
+  $scope.hasZip = false;
 
-  $scope.zipcode = zipService.zipcode;
+  $scope.zipcode;
 
-  $scope.$watch('zipcode', function(){
-    zipService.zipcode = $scope.zipcode;
-  });
+  $scope.getZip = function(){
+     if($scope.zippercode === undefined){
+      window.alert('a proper zip code is required');
+     } else{
+       $scope.forecast($scope.zippercode);
+       $scope.hasZip = true;
+     }
 
+  }
 
-   $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/weather", {callback: "JSON_CALLBACK"}, {get: {method: "JSONP"}});
+  $scope.forecast = function(zip){
 
+    $http.get("http://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&appid=d6dbfbaff7932cf4fe546adbf96d084d")
+  .then(function(response){ $scope.result = response.data; });
 
-  $scope.result = $scope.weatherAPI.get({zip:$scope.zipcode, country: "us", appid: "d6dbfbaff7932cf4fe546adbf96d084d" });
+    $scope.zippercode = '';
 
-
-}]);
-
-app.controller('forecastController', ['$scope', 'zipService', '$resource', function($scope, zipService, $resource){
-
-  $scope.zipcode = zipService.zipcode;
-
-  $scope.$watch('zipcode', function(){
-    zipService.zipcode = $scope.zipcode;
-  });
-
-  $scope.weatherAPI = $resource("http://api.openweathermap.org/data/2.5/weather", {callback: "JSON_CALLBACK"}, {get: {method: "JSONP"}});
-
-
-  $scope.result = $scope.weatherAPI.get({zip:$scope.zipcode, country: "us", appid: "d6dbfbaff7932cf4fe546adbf96d084d" });
+  }
 
   $scope.tempConvert = function(kelvin){
     return Math.round((1.8 * (kelvin - 273)) + 32);
@@ -72,12 +36,3 @@ app.controller('forecastController', ['$scope', 'zipService', '$resource', funct
 
 
 }]);
-
-
-
-
-
-
-
-
-
