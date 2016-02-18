@@ -1,17 +1,7 @@
 
-var static = require( 'node-static' ),
-    port = 8080,
-    http = require( 'http' );
+var express = require('express');
+var app = express();
 
+app.use(express.static('./public'));
 
-var file = new static.Server( './public', {
-    cache: 3600,
-    gzip: true
-} );
-
-
-http.createServer( function ( request, response ) {
-    request.addListener( 'end', function () {
-        file.serve( request, response );
-    } ).resume();
-} ).listen( port );
+app.listen(process.env.PORT || 8080);
