@@ -2,20 +2,15 @@
 <html ng-app="myApp">
 <head>
 
-  <title>Weather4Cast</title>
+  <title>WeatherNow</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
   <link rel="stylesheet" type="text/css" href="style.css">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-  <script src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
-  <script src="https://code.angularjs.org/1.4.5/angular-resource.js"></script>
-  <script src="app.js"></script>
-
 </head>
 
-<body>
+<body ng-controller="ZipController">
   <header>
   <div class="container">
     <div class="row">
@@ -23,42 +18,59 @@
       <h1>WeatherNow</h1>
       </div>
     </div>
-<!--     <div class="row">
-      <div class="col-md-12 input form-group form-inline">
-      <form>
-      <input class="form-control" type="text" placeholder="Type in a zip code" ng-model="zipcode"></input>
-      <a href="#/forecast/:zip" class="btn btn-primary">Get Forecast</a>
-      </form>
-    </div> -->
+
+    </div>
   </header>
 
      <div class="container">
 
-            <div ng-view></div>
+        <div>
 
-    </div>
-
-    <!-- <div class="row">
-      <div class="col-md-12 weather-info">
-        The weather for {{ result.name }}
-      </div>
-    </div>
-
-    <hr />
+<div>
     <div class="row">
-    <div class="col-md-4 weather-info">
-      The current temperature is {{ result.main.temp }} Kelvin.
+      <div class="col-md-12 input form-group form-inline">
+      <input class="form-control" type="text" pattern="[0-9]{5}" placeholder="5-digit U.S. zip code" ng-model="zippercode" required>
+      <input class="btn btn-primary" ng-click="getZip()" value="Get Weather">
     </div>
+</div>
 
-    <div class="col-md-4 weather-info">
-      Today's high is {{ result.main.temp_max }} Kelvin.
-    </div>
+<!-- <div class="row">
+  <div class="col-md-12 weather-info">
+    <a href="#/" class="btn btn-primary">Another City</a>
+  </div>
+</div> -->
 
-    <div class="col-md-4 weather-info">
-      The current humidity level is at {{ result.main.humidity }}%.
-    </div>
-    </div> -->
+<hr />
+
+<div ng-show="hasZip">
+  <div>
+  <h2 ng-cloak>Right now in {{ result.name }}, {{ result.weather[0].description | lowercase }}</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-3 weather-info">
+      <h4>Temperature</h4>
+      <h2 ng-cloak>{{ tempConvert(result.main.temp) }} &#8457 </h2>
   </div>
 
+  <div class="col-md-3 weather-info">
+    <h4>Humidity</h4>
+    <h2>{{ result.main.humidity }}%</h2>
+  </div>
+
+  <div class="col-md-3 weather-info">
+    <h4>Wind Speed</h4>
+    <h2>{{ round(result.wind.speed) }} mph</h2>
+  </div>
+</div>
+
+    </div>
+
+  </div>
+</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.4.5/angular-route.js"></script>
+  <script src="https://code.angularjs.org/1.4.5/angular-resource.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
